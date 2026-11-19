@@ -63,7 +63,8 @@ function InclusionPane({ snap, selected, onSelect }: Props) {
       <div className="pane-head">
         <h2 className="pane-title">Inclusion</h2>
       </div>
-      <div className="pane-body">
+      {/* Fixed: the figures and wait tables; only the list below scrolls. */}
+      <div className="inclusion-stats">
         <div className="figures">
           <div className="figure" title="On-chain messages that a polled mempool listed before their tipset">
             <span className="figure-value">{pct(view.cov.seen, view.cov.messages)}</span>
@@ -103,7 +104,13 @@ function InclusionPane({ snap, selected, onSelect }: Props) {
                 <WaitTable title="Premium (attoFIL)" rows={view.byPremium} />
               </div>
             )}
-            <h3 className="sub-title">Recently included</h3>
+          </>
+        )}
+      </div>
+      {view.included.length > 0 && (
+        <>
+          <h3 className="sub-title">Recently included</h3>
+          <div className="table-scroll">
             <table className="data-table compact">
               <thead>
                 <tr>
@@ -131,9 +138,9 @@ function InclusionPane({ snap, selected, onSelect }: Props) {
                 ))}
               </tbody>
             </table>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </section>
   )
 }

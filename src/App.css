@@ -297,6 +297,17 @@
   min-width: 60%;
 }
 
+/* The figures and wait tables stay put; the Recently included list scrolls below them. */
+.inclusion-stats {
+  flex: none;
+  max-height: 60%;
+  overflow: auto;
+}
+
+.inclusion-pane .sub-title {
+  margin-bottom: 0;
+}
+
 .inclusion-pane .data-table td,
 .inclusion-pane .data-table th {
   padding-right: 0.35rem;
